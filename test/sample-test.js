@@ -13,12 +13,12 @@ describe("TokenSwap", function () {
   beforeEach(async function () {
     [owner, user] = await ethers.getSigners();
 
-    const RumbleToken = await ethers.getContractFactory("Token");
-    rumbleToken = await RumbleToken.deploy("RumbleToken", "RTN", 10000);
+    const Token = await ethers.getContractFactory("Token");
+
+    rumbleToken = await Token.deploy("RumbleToken", "RTN", 10000);
     await rumbleToken.deployed();
 
-    const FishToken = await ethers.getContractFactory("Token");
-    fishToken = await FishToken.deploy("FishToken", "FTN", 10000);
+    fishToken = await Token.deploy("FishToken", "FTN", 10000);
     await fishToken.deployed();
 
     const TokenSwap = await ethers.getContractFactory("TokenSwap");
