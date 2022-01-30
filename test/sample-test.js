@@ -78,6 +78,11 @@ describe("TokenSwap", function () {
       .connect(owner)
       .approve(tokenSwap.address, ethers.utils.parseEther("10"));
 
+    // Update price case
+    await expect(
+      tokenSwap.updatePrice(wrongToken.address, 5)
+    ).to.be.revertedWith("Token not identified by the contract");
+
     // Deposit case
     await expect(
       tokenSwap.deposit(wrongToken.address, ethers.utils.parseEther("5"))

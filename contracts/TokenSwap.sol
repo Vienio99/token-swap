@@ -20,11 +20,10 @@ contract TokenSwap {
         rumblePrice = price1;
         fishPrice = price2;
     }
-    
 
     function updatePrice(IERC20 token, uint256 newPrice) external {
         require(msg.sender == owner, "Only owner can update the price");
-        require(token == rumbleToken || token == fishToken, "Deposited token not identified by the contract");
+        require(token == rumbleToken || token == fishToken, "Token not identified by the contract");
         if (token == rumbleToken) {
             rumblePrice = newPrice;
         } else {
